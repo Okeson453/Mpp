@@ -1,7 +1,8 @@
 // GET /api/instruments/[symbol] - get single instrument
 export async function GET(
   request: Request,
-  { params }: { params: { symbol: string } }
+  { params }: { params: Promise<{ symbol: string }> }
 ) {
-  return Response.json({ symbol: params.symbol });
+  const { symbol } = await params;
+  return Response.json({ symbol });
 }
