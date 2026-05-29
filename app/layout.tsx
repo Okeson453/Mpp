@@ -3,7 +3,7 @@ import { ReactQueryProvider } from '@/components/layout/react-query-provider';
 import { NoiseOverlay } from '@/components/layout/noise-overlay';
 import { GridBackground } from '@/components/layout/grid-background';
 import { ToastContainer } from '@/components/ui/toast';
-import '@/app/globals.css';
+import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: {
