@@ -1,0 +1,4 @@
+// POST /api/auth/logout
+export async function POST() {
+  return Response.json({ success: true, message: 'Logout successful' });
+}

@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────
+   FONT FACE DECLARATIONS
+───────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+/* ─────────────────────────────────────────────────
+   CSS CUSTOM PROPERTIES — ALL DESIGN TOKENS
+   ★ LOCKED. NEVER CHANGED. ★
+───────────────────────────────────────────────── */
+:root {
+  /* Foundation */
+  --void:      #080A0C;
+  --obsidian:  #0D1117;
+  --carbon:    #141921;
+  --graphite:  #1C2430;
+  --slate:     #252F3D;
+
+  /* Pink Signal — Institutional Trap / Hunt / Danger */
+  --pink-deep:  #C4195A;
+  --pink-core:  #E8266E;
+  --pink-glow:  #FF3D7F;
+  --pink-soft:  #FF7AAD;
+  --pink-ghost: rgba(232, 38, 110, 0.08);
+
+  /* Cyan Signal — Institutional Expansion / Confirmation / Target */
+  --cyan-deep:  #0A7C8C;
+  --cyan-core:  #0DB8CC;
+  --cyan-glow:  #18D4EA;
+  --cyan-soft:  #7EEAF5;
+  --cyan-ghost: rgba(13, 184, 204, 0.08);
+
+  /* Text */
+  --white:  #F0F4F8;
+  --silver: #8A9BB0;
+  --iron:   #4A5568;
+
+  /* Accent */
+  --gold:      #C8A84B;
+  --gold-soft: #F0D080;
+
+  /* Fonts */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Syne', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* System */
+  --radius:     2px;
+  --transition: 0.2s ease;
+}
+
+/* ─────────────────────────────────────────────────
+   KEYFRAME ANIMATIONS
+───────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expandW {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes scanline {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100vh); }
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes glowPing {
+  0%   { box-shadow: 0 0 0 0 rgba(232, 38, 110, 0.5); }
+  70%  { box-shadow: 0 0 0 12px rgba(232, 38, 110, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 38, 110, 0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ─────────────────────────────────────────────────
+   BASE STYLES
+───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  cursor: crosshair;
+  background: var(--void);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ─────────────────────────────────────────────────
+   SCROLLBAR STYLING
+───────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pink-core);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pink-glow);
+}
+
+/* ─────────────────────────────────────────────────
+   TEXT SELECTION
+───────────────────────────────────────────────── */
+::selection {
+  background: var(--pink-ghost);
+  color: var(--white);
+}
+
+/* ─────────────────────────────────────────────────
+   SCROLL REVEAL SYSTEM
+───────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────────
+   NOISE OVERLAY
+───────────────────────────────────────────────── */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+  background-image: url('/noise.svg');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ─────────────────────────────────────────────────
+   CHART GRID BACKGROUND
+───────────────────────────────────────────────── */
+.chart-grid-bg {
+  background-image:
+    linear-gradient(rgba(13, 184, 204, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 184, 204, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ─────────────────────────────────────────────────
+   UTILITY CLASSES
+───────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+.text-pink-ghost { color: var(--pink-ghost); }
+.bg-pink-ghost   { background-color: var(--pink-ghost); }
+.bg-cyan-ghost   { background-color: var(--cyan-ghost); }
+
+/* Active state accent bars */
+.accent-bar {
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pink-core), var(--cyan-core));
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.accent-bar.active  { transform: scaleX(1); }
+.accent-bar.inactive { transform: scaleX(0); }
+
+/* Scanline animation for loading states */
+.scanline-effect {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
+  opacity: 0.6;
+  animation: scanline 8s linear infinite;
+}
+
+/* Mono data formatting */
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--silver);
+}
+
+.data-row .separator {
+  color: var(--iron);
+  margin: 0 8px;
+}
+
+/* Pink glow text shadow */
+.glow-pink {
+  text-shadow: 0 0 20px rgba(255, 61, 127, 0.3);
+}
+
+/* Cyan glow text shadow */
+.glow-cyan {
+  text-shadow: 0 0 20px rgba(24, 212, 234, 0.3);
+}
+
+/* Gold glow text shadow */
+.glow-gold {
+  text-shadow: 0 0 20px rgba(200, 168, 75, 0.3);
+}
