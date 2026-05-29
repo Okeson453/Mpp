@@ -12,4 +12,9 @@ export default function RegisterLoading() {
                 <div className="space-y-3">
                     {[...Array(5)].map((_, i) => (
                         <div key={i} className="h-10 bg-slate-700 rounded"></div>
-  
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
